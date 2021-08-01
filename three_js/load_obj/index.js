@@ -377,9 +377,9 @@ function onWindowResize() {
 function createLights() {
 
   let hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1)
-  let ambientLight = new THREE.AmbientLight(0xe9b2ff, 0.3);
-  let shadowLight = new THREE.DirectionalLight(0xffffff, 0.5);
-  let shadow = new THREE.DirectionalLight(0xffffff, 0.1);
+  let ambientLight = new THREE.AmbientLight(0xe9b2ff, 1);
+  let shadowLight = new THREE.DirectionalLight(0xffffff, 1);
+  let shadow = new THREE.DirectionalLight(0xffffff, 1);
 
   shadowLight.position.set(0, 500, 350);
   shadowLight.castShadow = true;
