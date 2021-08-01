@@ -1,0 +1,11 @@
+Model Information:
+* title:	Lamborghini Huracan Performante
+* source:	https://sketchfab.com/3d-models/lamborghini-huracan-performante-dd482c3f5378434787950b826c349b80
+* author:	ishaknapitupulucxr2 (https://sketchfab.com/ishaknapitupulucxr2)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Lamborghini Huracan Performante" (https://sketchfab.com/3d-models/lamborghini-huracan-performante-dd482c3f5378434787950b826c349b80) by ishaknapitupulucxr2 (https://sketchfab.com/ishaknapitupulucxr2) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
