@@ -62,6 +62,7 @@ option.clear = function () {
   save_input.map((i) => {
     scene.remove(i);
   })
+  document.getElementById("src").remove()
 }
 
 

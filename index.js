@@ -3,10 +3,10 @@ var skill = [
     { src: "./img/js.png", name: "js", href: "https://hackmd.io/@lanx06/js" },
     { src: "./img/jquery.png", name: "jquery", href: "" },
     { src: "./img/vuejs.png", name: "vue.js", href: "" },
-    { src: "./img/api.png", name: "api", href: "" },
+    { src: "./img/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
 
     { src: "./img/github.png", name: "github", href: "" },
-    { src: "./img/python.png", name: "python", href: "" },
+    { src: "./img/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
     { src: "./img/opencv.png", name: "opencv", href: "" },
     // { src: "./img/colab.png", name: "colab", href: "" },
     { src: "./img/pytorch.png", name: "pythoch", href: "" },
@@ -41,19 +41,25 @@ function add_img() {
     var skill_div = $("." + "skill_tool")[0]
     for (var i = 0; i < skill.length; i++) {
 
-        let a = document.createElement("a")
         let div = document.createElement("div")
-        console.log(skill[i]);
+        // console.log(skill[i]);
         div.className = "img_div"
-        a.href = skill[i].href
         let image = document.createElement("img")
         image.src = skill[i].src
         let title = document.createElement("h3")
         title.innerHTML = skill[i].name;
         div.appendChild(image)
         div.appendChild(title)
-        a.appendChild(div)
-        skill_div.appendChild(a)
+        if (skill[i].href != "") {
+            let a = document.createElement("a")
+            a.href = skill[i].href
+            a.appendChild(div)
+            skill_div.appendChild(a)
+            console.log(skill[i].href)
+        }
+        else{
+            skill_div.appendChild(div)
+        }
 
     }
     // body...
@@ -65,7 +71,7 @@ function add_site() {
         let a = document.createElement("a")
         let div = document.createElement("div")
         let herf = site[i]["href"]
-        console.log(herf);
+        // console.log(herf);
         a.href = herf
 
         div.className = "work_div"
