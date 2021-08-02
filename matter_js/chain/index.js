@@ -341,37 +341,37 @@ function init() {
     //     Body.setVelocity(peter, { x: 0, y: -(25) })
     // }, 3000);
     // Composite.add(world, peter)
-    let base = Bodies.trapezoid(1340, 800, 40, 100, 2, {
-        render: {
-            fillStyle: '#4444dd',
-            strokeStyle: '#222222',
-            lineWidth: 3,
-        },
-        density:1000000000000000000000000000000000000000000000
+    // let base = Bodies.trapezoid(1340, 800, 40, 100, 2, {
+    //     render: {
+    //         fillStyle: '#4444dd',
+    //         strokeStyle: '#222222',
+    //         lineWidth: 3,
+    //     },
+    //     density:1000000000000000000000000000000000000000000000
 
-    })
+    // })
 
 
-    let round = Bodies.circle(1195, 800, 0, { isStatic: true })
-    Composite.add(world, round)
+    // let round = Bodies.circle(1195, 800, 0, { isStatic: true })
+    // Composite.add(world, round)
 
-    const base_constraint = Constraint.create({
-        pointA: { x: 0, y: 20 }, // 中心から少しずらす
-        bodyA: base,
-        pointB: { x: 0, y: 0 },
-        bodyB: round,
-        length: 0
-    })
-    setInterval(() => {
-        Body.setAngularVelocity(base, -0.1)
-        setTimeout(() => {
-            Body.setAngularVelocity(base, 0.11)
+    // const base_constraint = Constraint.create({
+    //     pointA: { x: 0, y: 20 }, // 中心から少しずらす
+    //     bodyA: base,
+    //     pointB: { x: 0, y: 0 },
+    //     bodyB: round,
+    //     length: 0
+    // })
+    // setInterval(() => {
+    //     Body.setAngularVelocity(base, -0.1)
+    //     setTimeout(() => {
+    //         Body.setAngularVelocity(base, 0.11)
             
-        }, 500);
-    }, 1000)
-    Composite.add(world,base_constraint)
-    Body.rotate(base, -Math.PI / 2)
-    Composite.add(world, base)
+    //     }, 500);
+    // }, 1000)
+    // Composite.add(world,base_constraint)
+    // Body.rotate(base, -Math.PI / 2)
+    // Composite.add(world, base)
 }
 
 init()

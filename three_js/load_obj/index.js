@@ -229,19 +229,20 @@ function load_models() {
   for (const file of this.files) {
     var tmppath = URL.createObjectURL(file);
     let tem_file_type = file.name.split(".")[file.name.split(".").length - 1]
-
+    console.log(tmppath)
     if (tem_file_type == "gltf") {
       preload_file = file
       mom_file = file.webkitRelativePath
       file_type = "gltf"
       mom_folder = file.webkitRelativePath.split("/")[0] + "/"
+      // console.log(mom_folder)
+
 
     } else if (tem_file_type == "fbx" || tem_file_type == "FBX") {
       preload_file = file
       mom_file = file.webkitRelativePath
       file_type = "fbx"
       mom_folder = file.webkitRelativePath.split("/")[0] + "/"
-      console.log(mom_folder)
 
     } else if (tem_file_type == "obj") {
       preload_file = file
@@ -260,9 +261,10 @@ function load_models() {
   console.log(mom_file)
   const manager = new THREE.LoadingManager();
   manager.setURLModifier((url) => {
-    // console.log(url)
+    console.log(url)
     let reurl = filemap[url];
     // console.log(typeof reurl)
+    url=window.decodeURIComponent(url)
     if (typeof reurl != "string") {
       for (var key in filemap) {
         if (key.split(url).length != 1) {
