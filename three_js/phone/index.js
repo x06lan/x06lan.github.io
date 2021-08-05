@@ -29,18 +29,12 @@ let save_input = []
 let contran = document.body
 let tem_textures
 let html_inputfile
-let input_models
+let phone
 // let is_input_models = false
 let mixer = false
-// const gui = new dat.GUI()
-textureLoader.load('hdri.jpg', function (texture) {
-  texture.encoding = THREE.sRGBEncoding;
-  texture.mapping = THREE.EquirectangularReflectionMapping;
-  scene.background = texture
-  tem_textures = texture
-  init()
 
-});
+scene.background= new THREE.Color( 0x000000 );
+
 const loader = new GLTFLoader();
 
 loader.load(
@@ -48,14 +42,14 @@ loader.load(
   "./models/phone/phone.gltf",
   function (gltf) {
     console.log(gltf)
-      input_models = gltf.scene
-    if (input_models.animations.length != 0) {
-      mixer = new THREE.AnimationMixer(input_models);
-      let animations = mixer.clipAction(input_models.animations[0])
+      phone = gltf.scene
+    if (phone.animations.length != 0) {
+      mixer = new THREE.AnimationMixer(phone);
+      let animations = mixer.clipAction(phone.animations[0])
       animations.play()
     }
-    scene.add(input_models);
-    save_input.push(input_models)
+    scene.add(phone);
+    save_input.push(phone)
   }
   ,
   function (xhr) {
@@ -69,17 +63,7 @@ loader.load(
 
 
 function init() {
-  html_inputfile = document.createElement("input")
-  html_inputfile.type = "file"
-  // html_inputfile.multiple = true
-  html_inputfile.webkitdirectory = true;
-  html_inputfile.accept = ".fbx,.gltf,.obj,image/*"
-  // html_inputfile.mozdirectory = true;
-  // html_inputfile.onchange = load_models
 
-
-  // scene.fog = new THREE.Fog(0xf7d9aa, 100, 950);
-  // document.body.appendChild(html_inputfile)
   contran.appendChild(stats.dom)
   contran.appendChild(renderer.domElement);
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -99,14 +83,11 @@ function init() {
   renderer.shadowMap.enabled = true;
 
   createLights()
-  action()
-}
-
-
-function action(shape) {
-
   animate();
+
 }
+
+
 
 function onWindowResize() {
 
@@ -115,7 +96,6 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
 
 }
-// 我的幾何體
 function createLights() {
 
   let hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 1)
@@ -148,8 +128,8 @@ function createLights() {
   var ch = new THREE.CameraHelper(shadowLight.shadow.camera);
   const gridHelper = new THREE.GridHelper(1000, 20);
 
-  scene.add(gridHelper);
-  scene.add(new THREE.AxesHelper(100));
+  // scene.add(gridHelper);
+  // scene.add(new THREE.AxesHelper(100));
   // scene.add(hemisphereLight);  
   // scene.add(ch);
   scene.add(ambientLight);
@@ -165,6 +145,9 @@ const animate = function () {
   if (mixer) mixer.update(delta);
 
   stats.begin();
+  phone.rotation.y+=Math.PI/200
   renderer.render(scene, camera);
   stats.end()
 };
+
+init()
