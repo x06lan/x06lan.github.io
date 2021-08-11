@@ -15,6 +15,8 @@ var skill = [
     { src: "./img/unreal.png", name: "unreal", href: "" },
 
 ]
+let add_iframe='<div class="sketchfab-embed-wrapper"> <iframe title="hazbin hotel Alastor mic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="200" height="200"  src="https://sketchfab.com/models/648fdc5276c14878b3892370bda9f4da/embed?autospin=0&autostart=1&camera=0&preload=1&ui_theme=dark">    </iframe></div>'
+
 let site = [
     { name: "json file tree", img: "./img/work/file_tree.png", href: "./json_to_filetree" },
     { name: "markdown editer", img: "./img/work/editer.png", href: "./own_code" },
@@ -26,7 +28,9 @@ let site = [
     { name: "p5.js particle", img: "./img/work/p5_particle_1.png", href: "./p5_js/particle_1" },
     { name: "three.js face boolean", img: "./img/work/face_boolean.png", href: "./three_js/face_boolean" },
     { name: "three.js 3D preview", img: "./img/work/3D_preview.png", href: "./three_js/load_obj" },
-    { name: "matter.js 2D chain", img: "./img/work/chain.png", href: "./matter_js/chain" }
+    { name: "matter.js 2D chain", img: "./img/work/chain.png", href: "./matter_js/chain" },
+    { name: "blender modeling", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe}
+
 
 ]
 let blog = [
@@ -37,8 +41,9 @@ let blog = [
 
 ]
 
+
 function add_img() {
-    var skill_div = $("." + "skill_tool")[0]
+    var skill_div = $("." + "container")[0]
     for (var i = 0; i < skill.length; i++) {
 
         let div = document.createElement("div")
@@ -66,7 +71,7 @@ function add_img() {
 }
 
 function add_site() {
-    let work = $("." + "work")[0]
+    let work = $("." + "container")[1]
     for (var i = 0; i < site.length; i++) {
         let a = document.createElement("a")
         let div = document.createElement("div")
@@ -79,15 +84,24 @@ function add_site() {
         image.src = site[i].img
         let title = document.createElement("h3")
         title.innerHTML = site[i].name;
-        div.appendChild(image)
-        div.appendChild(title)
-        a.appendChild(div)
-        work.appendChild(a)
+        if(site[i]["add"]!=null){
+            div.innerHTML=site[i]["add"]
+            div.appendChild(title)
+            a.appendChild(div)
+            work.appendChild(a)
+            
+        }else{
+            div.appendChild(image)
+            div.appendChild(title)
+            a.appendChild(div)
+            work.appendChild(a)
+        }  
+
     }
 }
 
 function add_blog() {
-    let blog_div = $("." + "work")[1]
+    let blog_div = $("." + "container")[2]
     for (var i = 0; i < blog.length; i++) {
         let a = document.createElement("a")
         let div = document.createElement("div")

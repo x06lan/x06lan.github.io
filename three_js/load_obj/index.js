@@ -31,8 +31,6 @@ loader.load('models/fbx/source/seria0617.fbx', function (FBX) {
   // console.log(FBX)
   scene.add(FBX);
   save_input.push(FBX)
-  input_models=FBX
-  is_input_models=true
 
 }, ()=> {}, function (error) {
 
@@ -173,7 +171,7 @@ scale.add(option.scale, "x", 0, 2, 0.01)
 scale.add(option.scale, "y", 0, 2, 0.01)
 scale.add(option.scale, "z", 0, 2, 0.01)
 
-let texture = controls.addFolder("set texture")
+let texture = controls.addFolder("texture")
 texture.add(option, 'texture_type', texture_type)
 texture.add(option, "setup_texture")
 
