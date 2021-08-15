@@ -31,8 +31,8 @@ let site = [
     { name: "three.js face boolean", img: "./img/work/face_boolean.png", href: "./three_js/face_boolean" },
     { name: "three.js 3D preview", img: "./img/work/3D_preview.png", href: "./three_js/load_obj" },
     { name: "matter.js 2D chain", img: "./img/work/chain.png", href: "./matter_js/chain" },
-    { name: "hazbin hotel Alastor mic", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe1+"648fdc5276c14878b3892370bda9f4da"+add_iframe2},
-    { name: "helluva boss Stolas grimoire", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe1+"3cb77dfa04ac4a17ba7a7eaf836d3798"+add_iframe2}
+    { name: "hazbin hotel Alastor Scepter", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe1+"648fdc5276c14878b3892370bda9f4da"+add_iframe2},
+    { name: "helluva boss Stolas grimoire", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe1+"0a98459ea48546b480eaa3c80f8bc748"+add_iframe2}
 
 
 ]
