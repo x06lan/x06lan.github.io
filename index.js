@@ -15,7 +15,9 @@ var skill = [
     { src: "./img/unreal.png", name: "unreal", href: "" },
 
 ]
-let add_iframe='<div class="sketchfab-embed-wrapper"> <iframe title="hazbin hotel Alastor mic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="200" height="200"  src="https://sketchfab.com/models/648fdc5276c14878b3892370bda9f4da/embed?autospin=0&autostart=1&camera=0&preload=1&ui_theme=dark">    </iframe></div>'
+let add_iframe1='<div class="sketchfab-embed-wrapper"> <iframe title="hazbin hotel Alastor mic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="200" height="200"  src="https://sketchfab.com/models/'
+
+let add_iframe2= '/embed?autospin=0&autostart=1&camera=0&preload=1&ui_theme=dark">    </iframe></div>'
 
 let site = [
     { name: "json file tree", img: "./img/work/file_tree.png", href: "./json_to_filetree" },
@@ -29,7 +31,8 @@ let site = [
     { name: "three.js face boolean", img: "./img/work/face_boolean.png", href: "./three_js/face_boolean" },
     { name: "three.js 3D preview", img: "./img/work/3D_preview.png", href: "./three_js/load_obj" },
     { name: "matter.js 2D chain", img: "./img/work/chain.png", href: "./matter_js/chain" },
-    { name: "blender modeling", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe}
+    { name: "hazbin hotel Alastor mic", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe1+"648fdc5276c14878b3892370bda9f4da"+add_iframe2},
+    { name: "helluva boss Stolas grimoire", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe1+"3cb77dfa04ac4a17ba7a7eaf836d3798"+add_iframe2}
 
 
 ]
@@ -50,7 +53,7 @@ function add_img() {
         // console.log(skill[i]);
         div.className = "img_div"
         let image = document.createElement("img")
-        image.className="img120"
+        // image.className="img120"
         image.src = skill[i].src
         let title = document.createElement("h3")
         title.innerHTML = skill[i].name;
