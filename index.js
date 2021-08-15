@@ -50,6 +50,7 @@ function add_img() {
         // console.log(skill[i]);
         div.className = "img_div"
         let image = document.createElement("img")
+        image.className="img120"
         image.src = skill[i].src
         let title = document.createElement("h3")
         title.innerHTML = skill[i].name;
