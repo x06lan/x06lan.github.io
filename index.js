@@ -33,7 +33,11 @@ let site = [
     { name: "three.js 3D preview", img: "./img/work/3D_preview.png", href: "./three_js/load_obj" },
     { name: "matter.js 2D chain", img: "./img/work/chain.png", href: "./matter_js/chain" },
     { name: "hazbin hotel Alastor Scepter", img: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", add:add_iframe1+"648fdc5276c14878b3892370bda9f4da"+add_iframe2,time:20210809},
-    { name: "helluva boss Stolas grimoire", img: "", href: "https://sketchfab.com/3d-models/book-unapp-0a98459ea48546b480eaa3c80f8bc748", add:add_iframe1+"0a98459ea48546b480eaa3c80f8bc748"+add_iframe2,time:20210816}
+    { name: "helluva boss Stolas grimoire", img: "", href: "https://sketchfab.com/3d-models/book-unapp-0a98459ea48546b480eaa3c80f8bc748", add:add_iframe1+"0a98459ea48546b480eaa3c80f8bc748"+add_iframe2,time:20210816},
+    { name: "blender diamond materials", img: "./img/work/diman.png", href: "https://www.artstation.com/artwork/3dJXRY",time:20210819},
+    { name: "blender water simulation", img: "./img/work/water.png", href: "https://www.artstation.com/artwork/rAgENG",time:20210820},
+    { name: "intel IC", img: "./img/work/ic.png", href: "https://www.artstation.com/artwork/48Y9Zn",time:20210821},
+
 
 
 ]
