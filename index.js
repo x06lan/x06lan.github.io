@@ -3,7 +3,7 @@ var skill = [
     { src: "./img/js.png", name: "js", href: "https://hackmd.io/@lanx06/js" },
     { src: "./img/jquery.png", name: "jquery", href: "" },
     { src: "./img/vuejs.png", name: "vue.js", href: "" },
-    { src: "./img/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
+    // { src: "./img/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
 
     { src: "./img/github.png", name: "github", href: "" },
     { src: "./img/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
@@ -13,6 +13,7 @@ var skill = [
 
     { src: "./img/unity.png", name: "unity", href: "" },
     { src: "./img/unreal.png", name: "unreal", href: "" },
+    { src: "./img/blender.png", name: "blender", href: "" },
 
 ]
 let add_iframe1='<div class="sketchfab-embed-wrapper"> <iframe title="hazbin hotel Alastor mic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="200" height="200"  src="https://sketchfab.com/models/'
@@ -20,12 +21,12 @@ let add_iframe1='<div class="sketchfab-embed-wrapper"> <iframe title="hazbin hot
 let add_iframe2= '/embed?autospin=0&autostart=1&camera=0&preload=1&ui_theme=dark">    </iframe></div>'
 
 let site = [
-    { name: "json file tree", img: "./img/work/file_tree.png", href: "./json_to_filetree" },
-    { name: "markdown editer", img: "./img/work/editer.png", href: "./own_code" },
+    // { name: "json file tree", img: "./img/work/file_tree.png", href: "./json_to_filetree" },
+    // { name: "markdown editer", img: "./img/work/editer.png", href: "./own_code" },
     // { name: "big data", img: "./img/work/ins.png", href: "./DrawYouInstagram" },
-    { name: "3D render ascii art", img: "./img/work/tri.png", href: "https://youtu.be/Jp458nW5IgE" },
-    { name: "unreal", img: './img/work/unreal_missile.png', href: "https://youtube.com/playlist?list=PLeoB7keAcLcOj02hPuEZypDvmf_G_1J0S" },
-    { name: "line bot github", img: "./img/work/line.png", href: "https://github.com/x06lan/line_bot_song_recognizer_Public" },
+    // { name: "3D render ascii art", img: "./img/work/tri.png", href: "https://youtu.be/Jp458nW5IgE" },
+    // { name: "unreal", img: './img/work/unreal_missile.png', href: "https://youtube.com/playlist?list=PLeoB7keAcLcOj02hPuEZypDvmf_G_1J0S" },
+    // { name: "line bot github", img: "./img/work/line.png", href: "https://github.com/x06lan/line_bot_song_recognizer_Public" },
     { name: "p5.js noise", img: "./img/work/p5_noise_1.png", href: "./p5_js/noise_1" },
     { name: "p5.js particle", img: "./img/work/p5_particle_1.png", href: "./p5_js/particle_1" },
     { name: "three.js face boolean", img: "./img/work/face_boolean.png", href: "./three_js/face_boolean" },
