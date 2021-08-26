@@ -5,7 +5,7 @@ var skill = [
     { src: "./img/vuejs.png", name: "vue.js", href: "" },
     // { src: "./img/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
 
-    { src: "./img/github.png", name: "github", href: "" },
+    { src: "./img/github.png", name: "github", href: "https://github.com/x06lan" },
     { src: "./img/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
     { src: "./img/opencv.png", name: "opencv", href: "" },
     // { src: "./img/colab.png", name: "colab", href: "" },
