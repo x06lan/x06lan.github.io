@@ -37,7 +37,10 @@ let site = [
     { name: "blender diamond materials", img: "./img/work/diman.png", href: "https://www.artstation.com/artwork/3dJXRY",time:20210819},
     { name: "blender water simulation", img: "./img/work/water.png", href: "https://www.artstation.com/artwork/rAgENG",time:20210820},
     { name: "intel IC", img: "./img/work/ic.png", href: "https://www.artstation.com/artwork/48Y9Zn",time:20210821},
-
+    { name: "flower", img: "./img/work/flower.png", href: "https://www.artstation.com/artwork/48YegW",time:20210823},
+    { name: "eye", img: "./img/work/eye.png", href: "https://www.artstation.com/artwork/L3q61w",time:20210825},
+    { name: "house", img: "./img/work/house.png", href: "https://www.artstation.com/artwork/3d5X62",time:20210827},
+    { name: "gun", img: "./img/work/gun.png", href: "https://www.artstation.com/artwork/NxXnZN",time:20210829},
 
 
 ]
