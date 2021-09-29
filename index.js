@@ -59,7 +59,6 @@ function add_img() {
 
         let div = document.createElement("div")
         // console.log(skill[i]);
-        div.className = "img_div"
         let image = document.createElement("img")
         // image.className="img120"
         image.src = skill[i].src
@@ -73,8 +72,12 @@ function add_img() {
             a.appendChild(div)
             skill_div.appendChild(a)
             console.log(skill[i].href)
+            a.className = "img_div"
+
         }
         else{
+            div.className = "img_div"
+
             skill_div.appendChild(div)
         }
 
@@ -91,7 +94,8 @@ function add_site() {
         // console.log(herf);
         a.href = herf
 
-        div.className = "work_div"
+        a.className = "work_div"
+        // div.className = "work_div"
         let image = document.createElement("img")
         image.src = site[i].img
         let title = document.createElement("h3")
@@ -117,7 +121,7 @@ function add_blog() {
     for (var i = 0; i < blog.length; i++) {
         let a = document.createElement("a")
         let div = document.createElement("div")
-        div.className = "work_div";
+        a.className = "work_div";
         a.href = blog[i].herf;
         let image = document.createElement("img")
         image.src = blog[i].img
