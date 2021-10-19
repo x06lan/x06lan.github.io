@@ -85,10 +85,11 @@ colors.addColor(option.colors, "color2")
 colors.addColor(option.colors, "color3")
 
 controls.add(option, "speed", -100, 99, 0.01)
-controls.add(option, "size", 1, 100, 0.1)
 controls.add(option, "opacity", 0, 1, 0.01)
+controls.add(option, "size", 1, 100, 0.1).onChange(()=>option.shape())
 controls.add(option, "wireframe")
 controls.add(option, "move")
+
 controls.open()
 
 let shape = controls.addFolder("shape")
