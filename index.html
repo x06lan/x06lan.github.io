@@ -12,7 +12,7 @@
     <!-- <script src="https://www.vantajs.com/vendor/three.r95.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="./vanta/vanta.globe.min.js"></script>
-    <script src="./vanta/vanta.net.min.js"></script>
+    <!-- <script src="./vanta/vanta.net.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.4.1/vanilla-tilt.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -79,17 +79,17 @@
             color: 0x00ff00,
             backgroundColor: backgroundColor
         })
-        VANTA.NET({
-            el: ".background",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 1200.00,
-            minWidth: 800.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            backgroundColor: backgroundColor
-        })
+        // VANTA.NET({
+        //     el: ".background",
+        //     mouseControls: true,
+        //     touchControls: true,
+        //     gyroControls: false,
+        //     minHeight: 1200.00,
+        //     minWidth: 800.00,
+        //     scale: 1.00,
+        //     scaleMobile: 1.00,
+        //     backgroundColor: backgroundColor
+        // })
 
         var demo = new Vue({
             el: '.header',
