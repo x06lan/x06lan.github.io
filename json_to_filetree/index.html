@@ -21,7 +21,7 @@
     function json_length(obj) {
         var i = 0;
         for (var x in obj) {
-            if (obj.hasOwnProperty(x)) {
+            if (obj.hasOwnProperty(x),typeof(obj=="object")) {
                 i++;
             }
         }
@@ -39,7 +39,7 @@
             if (json_arr.hasOwnProperty(key)) {
                 var item = json_arr[key]
 
-                if (json_length(item) != 0) {
+                if (json_length(item) != 0 && typeof(item)=="object") {
                     save += file_child_len(item, save)
                         // console.log("c",save)
                 } else {
@@ -74,8 +74,10 @@
         var text_arr = []
         var i = -1
         var dir_number = -1
+        // '─' number
         var set_len = 2
-        var tab = 5
+        //tab number
+        var tab = 4
         var file_len = json_length(json_arr)
         for (const key in json_arr) {
             var ele = json_arr[key]
@@ -93,11 +95,10 @@
             }
 
             text_arr[i] += key
-
-            if (ele != '') {
+            // console.log(ele,typeof(ele))
+            if (typeof(ele)=="object") {
                 var ch_ele = json_to_text(ele)
                 if (dir_number < file_len - 1) {
-                    console.log(key, ele);
                     ch_ele = tab_tree(ch_ele, tab - 1)
                     for (let x = 0; x < ch_ele.length; x++) {
                         ch_ele[x] = "|" + ch_ele[x]
@@ -115,6 +116,11 @@
                 }
                 i += file_child_len(ele, 0)
             }
+            else if(ele!="") {
+
+                text_arr[i] +="."+ele
+
+            }
         }
 
         return text_arr
@@ -127,17 +133,17 @@
                 "not": "",
                 "ok": ""
             },
-            "facebook": "",
-            "aws": {
+            "Facebook": "",
+            "AWS": {
                 "face": "",
                 "youtube": {
-                    "channl": "",
+                    "channel": "",
                     "file": ""
                 }
             }
         }
     }
-    document.getElementsByClassName("in_text")[0].value = JSON.stringify(json_test, null, "\t")
+    document.getElementsByClassName("in_text")[0].value = JSON.stringify(json_test, null, "    ")
 
     var button = document.getElementsByClassName("convert_button")[0]
     button.onclick = function(e) {
@@ -156,6 +162,7 @@
             }
 
         } catch (error) {
+            console.log(error)
             out_texteare.value = "error"
 
         }
