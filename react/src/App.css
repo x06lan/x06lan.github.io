@@ -13,15 +13,15 @@
   margin-left: 50px;
 }
 .content{
+  width: 50%;
+  min-width: 500px;
+  max-width: 950px;
   margin: auto;
-  position: absolute;
-  top: 300px;
+  /* position: absolute; */
+  /* top: 300px; */
 }
 .work{
-  width: 50%;
-  min-width: 440px;
-  max-width: 950px;
-  margin: 0px auto;
+  margin: auto;
   margin-top: 20px;
   border-radius: 20px;
   background-color: #001e2c;
@@ -29,10 +29,7 @@
   padding: 30px;
 }
 .tool{
-  width: 50%;
-  min-width: 440px;
-  max-width: 950px;
-  margin: 0px auto;
+  margin:auto;
   margin-top: 20px;
   border-radius: 20px;
   background-color: #001e2c;
@@ -40,13 +37,19 @@
   padding: 30px;
 }
 .blog{
-  width: 50%;
-  min-width: 440px;
-  max-width: 950px;
-  margin: 0px auto;
+  margin:auto;
   margin-top: 20px;
   border-radius: 20px;
   background-color: #001e2c;
   color: #ffffff;
   padding: 30px;
+}
+.email{
+  /* margin:auto; */
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: #001e2c;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
 }

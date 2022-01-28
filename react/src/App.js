@@ -53,7 +53,7 @@ function App() {
       <div className="header">
         <h1>x06lan</h1>
       </div>
-      <div className="contenjt">
+      <div className="content">
         <div className="tool">
           <h2 className="name_title"> Tech</h2>
           <Icon_block_list datas={tool}/>
@@ -67,6 +67,9 @@ function App() {
           <Image_block_list datas={blog}/>
         </div>
       </div>
+        <div className="email">
+          Email: x065p4mp6@gmail.com
+        </div>
     </div>
     
   );

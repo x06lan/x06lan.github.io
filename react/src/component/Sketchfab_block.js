@@ -3,8 +3,11 @@ function sketchfab_block(props) {
     return(
     <div className ="sketchfab-embed-wrapper "> 
         <iframe title="hazbin hotel Alastor mic" 
-        frameborder="0" allowfullscreen mozallowfullscreen="true" 
-        webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="200" height="200"  
+        frameBorder="0" allowFullScreen
+        mozallowfullscreen="true" 
+        webkitallowfullscreen="true" 
+        allow="fullscreen; autoplay; vr" xr-spatial-tracking ="true"
+        execution-while-out-of-viewport="true" execution-while-not-rendered web-share="true" width="200" height="200"  
         src={src}
         style={{borderRadius:"5% 5% 5% 5%"}}>
     </iframe>
