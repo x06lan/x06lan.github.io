@@ -1,0 +1,52 @@
+.header{
+  margin: 0px auto;
+  width: 800px;
+  padding-top: 50px;
+  padding-left: 20px;
+}
+.name_title{
+  font-size: 60px;
+  font-weight: 70px;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+.content{
+  margin: auto;
+  position: absolute;
+  top: 300px;
+}
+.work{
+  width: 50%;
+  min-width: 440px;
+  max-width: 950px;
+  margin: 0px auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: #001e2c;
+  color: #ffffff;
+  padding: 30px;
+}
+.tool{
+  width: 50%;
+  min-width: 440px;
+  max-width: 950px;
+  margin: 0px auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: #001e2c;
+  color: #ffffff;
+  padding: 30px;
+}
+.blog{
+  width: 50%;
+  min-width: 440px;
+  max-width: 950px;
+  margin: 0px auto;
+  margin-top: 20px;
+  border-radius: 20px;
+  background-color: #001e2c;
+  color: #ffffff;
+  padding: 30px;
+}
