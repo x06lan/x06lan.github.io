@@ -1,20 +1,24 @@
 import "./Icon_block.css"
-function Icon_block(props){
-    return (
-        <a href={props.data.href}className="block_div">
-            <img src={props.data.src} className="icon_image"/>
-            <h3 className="icon_title">{props.data.name}</h3>
+import React, { Component }  from 'react';
+class Icon_block extends Component{
+    render() {
+        return(
+        <a href={this.props.data.href}className="block_div" target="_blank"  rel="noopener noreferrer">
+            <img src={this.props.data.src} className="icon_image"/>
+            <h3 className="icon_title">{this.props.data.name}</h3>
         </a>
-    )
+        )
+    }
 }
-
-function Icon_block_list(props){
-    return (
+class Icon_block_list extends Component {
+    render(){
+        return(
         <div className="block_list container">
-            {props.datas.map(function(item,index){
+            {this.props.datas.map(function(item,index){
                 return <Icon_block key={index} data={item}/>
             })}
         </div>
-    )
+        )
+    }
 }
 export default Icon_block_list;

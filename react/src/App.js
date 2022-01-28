@@ -1,5 +1,7 @@
 import Image_block_list from "./component/Image_block.js"
 import Icon_block_list from "./component/Icon_block.js"
+// import Headeff from "./component/headline.js"
+import React from "react";
 import "./App.css";
 var tool= [
 
@@ -24,11 +26,11 @@ let site = [
     // { name: "3D render ascii art", src: "./img/work/tri.png", href: "https://youtu.be/Jp458nW5IgE" },
     // { name: "unreal", src: './img/work/unreal_missile.png', href: "https://youtube.com/playlist?list=PLeoB7keAcLcOj02hPuEZypDvmf_G_1J0S" },
     // { name: "line bot github", src: "./img/work/line.png", href: "https://github.com/x06lan/line_bot_song_recognizer_Public" },
-    { name: "p5.js noise", src: "./img/work/p5_noise_1.png", href: "./p5_js/noise_1" },
-    { name: "p5.js particle", src: "./img/work/p5_particle_1.png", href: "./p5_js/particle_1" },
-    { name: "three.js face boolean", src: "./img/work/face_boolean.png", href: "./three_js/face_boolean" },
-    { name: "three.js 3D preview", src: "./img/work/3D_preview.png", href: "./three_js/load_obj" },
-    { name: "matter.js 2D chain", src: "./img/work/chain.png", href: "./matter_js/chain" },
+    { name: "p5.js noise", src: "./img/work/p5_noise_1.png", href: "https://x06lan.github.io/p5_js/noise_1" },
+    { name: "p5.js particle", src: "./img/work/p5_particle_1.png", href: "https://x06lan.github.io/p5_js/particle_1" },
+    { name: "three.js face boolean", src: "./img/work/face_boolean.png", href: "https://x06lan.github.io/three_js/face_boolean" },
+    { name: "three.js 3D preview", src: "./img/work/3D_preview.png", href: "https://x06lan.github.io/three_js/load_obj" },
+    { name: "matter.js 2D chain", src: "./img/work/chain.png", href: "https://x06lan.github.io/matter_js/chain" },
     { name: "hazbin hotel Alastor Scepter", src: "", href: "https://sketchfab.com/3d-models/hazbin-hotel-alastor-mic-648fdc5276c14878b3892370bda9f4da", sketchfab_id:"648fdc5276c14878b3892370bda9f4da",time:20210809},
     { name: "helluva boss Stolas grimoire", src: "", href: "https://sketchfab.com/3d-models/book-unapp-0a98459ea48546b480eaa3c80f8bc748", sketchfab_id:"0a98459ea48546b480eaa3c80f8bc748",time:20210816},
     { name: "blender diamond materials", src: "./img/work/diman.png", href: "https://www.artstation.com/artwork/3dJXRY",time:20210819},
@@ -46,12 +48,17 @@ let blog = [
     { name: "git", src: "./img/blog/git.png", href: "https://hackmd.io/@lanx06/git" }
 
 ]
-function App() {
-
+class App extends React.Component {
+  render(){
   return (
     <div>
+      <div className="head_3d" id="three_canva">
+        {/* <Headeff></Headeff> */}
+      </div>
       <div className="header">
-        <h1>x06lan</h1>
+        <h1 className="head_title">
+          x06lan
+        </h1>
       </div>
       <div className="content">
         <div className="tool">
@@ -66,13 +73,15 @@ function App() {
           <h2 className="name_title"> Blog</h2>
           <Image_block_list datas={blog}/>
         </div>
-      </div>
         <div className="email">
           Email: x065p4mp6@gmail.com
         </div>
+      </div>
     </div>
     
   );
+
+  }
 }
 
 export default App;
