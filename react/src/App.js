@@ -59,6 +59,10 @@ class App extends React.Component {
         <h1 className="head_title">
           x06lan
         </h1>
+        <h2 className="head_content">
+          Learning about 3D things
+
+        </h2>
       </div>
       <div className="content">
         <div className="tool">

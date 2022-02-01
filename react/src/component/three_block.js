@@ -7,9 +7,8 @@ const math = create(all)
 let noise = new Perlin(math.random());
 let camera, scene, renderer;
 let geometry ,material ,meshs;
-let block_height=400
+let block_height=600
 let mouse={x:0,y:0}
-let cam_move={x:0,y:0,z:0}
 let cubes=[]
 let size=10
 let gap=0.2
@@ -19,11 +18,10 @@ function animation( time ) {
 	let dt=0.0005
 	// pos.x=time*dt
 	// console.log(noise.get3(pos))
-	camera.position.x=mouse.x
+	camera.position.x=mouse.x*2
 	camera.position.y=mouse.y+3
 	
 	let gap_noise=0.7
-	// console.log(size)
 	meshs.rotation.y=dt*time
 	for (let index_x= 0; index_x <size; index_x++) {
 		for(let index_y=0; index_y<size;index_y++){
@@ -64,14 +62,14 @@ function init(targe) {
 	document.addEventListener( 'mouseover', onDocumentMouseMove );
 
 	camera = new THREE.PerspectiveCamera( 50, window.innerWidth / block_height, 0.01, 10 );
-	camera.position.z = 3;
+	camera.position.z = 5;
 	camera.position.x= 1;
 
 	scene = new THREE.Scene();
 	//background color
-	scene.background = new THREE.Color( 0x3cffbe);
+	// scene.background = new THREE.Color( 0x3cffbe);
+	scene.background = new THREE.Color( 0x3c49ff);
 
-	// geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
 	material = new THREE.MeshNormalMaterial();
 	geometry = new THREE.BufferGeometry();
 
@@ -99,10 +97,11 @@ function init(targe) {
 
 	group.rotation.x=math.pi/4
 	group.rotation.z=math.pi/4
-	
+	meshs.scale.x=1.3
+	meshs.scale.y=1.3
+	meshs.scale.z=1.3
 
 	meshs.add(group)
-
 	scene.add( meshs );
 	console.log(cubes)
 	renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -114,9 +113,9 @@ function init(targe) {
 	
 	grid.material.opacity = 0.2; 
 	grid.material.transparent = true;
-	scene.add( grid );
+	// scene.add( grid );
 	const axisHelper = new THREE.AxisHelper( 5 );	
-	scene.add( axisHelper );
+	// scene.add( axisHelper );
 	// const helper = new THREE.PolarGridHelper( 10, 16, 8, 64);
 	// scene.add( helper );
 
