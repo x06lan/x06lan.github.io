@@ -12,6 +12,7 @@
     "react-scripts": "^3.0.1",
     "serve": "^13.0.2",
     "three": "^0.137.4",
+    "three-noise": "^1.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
