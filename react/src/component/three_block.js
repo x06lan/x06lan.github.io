@@ -1,8 +1,6 @@
 import * as THREE from 'three';
-import {create,all, add, pi, index}from 'mathjs'
-import { MeshStandardMaterial } from 'three';
+import {create,all}from 'mathjs'
 import { Perlin } from 'three-noise';
-import { seededRandom } from 'three/src/math/MathUtils';
 const math = create(all)
 let noise = new Perlin(math.random());
 let camera, scene, renderer;
@@ -16,13 +14,13 @@ let gap=0.2
 function animation( time ) {
 
 	let dt=0.0005
-	// pos.x=time*dt
 	// console.log(noise.get3(pos))
-	camera.position.x=mouse.x*2
-	camera.position.y=mouse.y+3
+	// camera.position.x=mouse.x*10
+	camera.position.y=mouse.y*2
 	
 	let gap_noise=0.7
-	meshs.rotation.y=dt*time
+	meshs.rotation.y+=dt*10
+	meshs.rotation.y+=mouse.x/20
 	for (let index_x= 0; index_x <size; index_x++) {
 		for(let index_y=0; index_y<size;index_y++){
 			for(let index_z=0; index_z<size;index_z++){
@@ -97,9 +95,9 @@ function init(targe) {
 
 	group.rotation.x=math.pi/4
 	group.rotation.z=math.pi/4
-	meshs.scale.x=1.3
-	meshs.scale.y=1.3
-	meshs.scale.z=1.3
+	meshs.scale.x=1.1
+	meshs.scale.y=1.1
+	meshs.scale.z=1.1
 
 	meshs.add(group)
 	scene.add( meshs );
