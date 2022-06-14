@@ -1,19 +1,19 @@
 var skill = [
 
-    { src: "./img/js.png", name: "js", href: "https://hackmd.io/@lanx06/js" },
-    { src: "./img/jquery.png", name: "jquery", href: "" },
-    { src: "./img/vuejs.png", name: "vue.js", href: "" },
-    // { src: "./img/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
+    { src: "./img/tech/js.png", name: "js", href: "https://hackmd.io/@lanx06/js" },
+    { src: "./img/tech/jquery.png", name: "jquery", href: "" },
+    { src: "./img/tech/vuejs.png", name: "vue.js", href: "" },
+    // { src: "./img/tech/api.png", name: "api", href: "https://hackmd.io/@lanx06/nodejs_api" },
 
-    { src: "./img/github.png", name: "github", href: "https://github.com/x06lan" },
-    { src: "./img/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
-    { src: "./img/opencv.png", name: "opencv", href: "" },
-    // { src: "./img/colab.png", name: "colab", href: "" },
-    { src: "./img/pytorch.png", name: "pythoch", href: "" },
+    { src: "./img/tech/github.png", name: "github", href: "https://github.com/x06lan" },
+    { src: "./img/tech/python.png", name: "python", href: "https://hackmd.io/@lanx06/python" },
+    { src: "./img/tech/opencv.png", name: "opencv", href: "" },
+    // { src: "./img/tech/colab.png", name: "colab", href: "" },
+    { src: "./img/tech/pytorch.png", name: "pythoch", href: "" },
 
-    { src: "./img/unity.png", name: "unity", href: "" },
-    { src: "./img/unreal.png", name: "unreal", href: "" },
-    { src: "./img/blender.png", name: "blender", href: "" },
+    { src: "./img/tech/unity.png", name: "unity", href: "" },
+    { src: "./img/tech/unreal.png", name: "unreal", href: "" },
+    { src: "./img/tech/blender.png", name: "blender", href: "" },
 
 ]
 let add_iframe1='<div class="sketchfab-embed-wrapper"> <iframe title="hazbin hotel Alastor mic" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="fullscreen; autoplay; vr" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="200" height="200"  src="https://sketchfab.com/models/'

@@ -9,7 +9,8 @@ let points = []
 let timecount = 0
 let option = {
   noise_scale: 20,
-  max_angle: 4,
+  max_angle: 2,
+  step:4,
   speed: 70,
   point_number: 400,
   point_size: 5,
@@ -43,6 +44,7 @@ let par = controls.addFolder("parameter")
 par.add(option, "point_number", 0, 1000, 1)
 par.add(option, "noise_scale", 1, 100, 1)
 par.add(option, "max_angle", 0.1, 4, 0.1)
+par.add(option, "step", 1, 100, 1)
 par.add(option, "opacity", 0, 255, 1)
 par.add(option, "speed", 0, 500, 1)
 par.add(option, "point_size", 1, 20, 0.1)
@@ -144,7 +146,7 @@ function draw() {
     point_point.path_long = option.length
 
     //最重要的地方
-    let angle = option.max_angle * Math.PI * noise(point_point.pos.x * option.noise_scale / 10000, point_point.pos.y * option.noise_scale / 10000)
+    let angle = option.max_angle * Math.PI * floor(noise(point_point.pos.x * option.noise_scale / 10000, point_point.pos.y * option.noise_scale / 10000)*option.step)/option.step;
     
     newx = option.speed / 100 * Math.cos(angle) + point_point.pos.x
     newy = option.speed / 100 * Math.sin(angle) + point_point.pos.y
