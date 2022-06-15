@@ -8,9 +8,9 @@ let canvas
 let points = []
 let timecount = 0
 let option = {
-  noise_scale: 20,
+  noise_scale: 60,
   max_angle: 2,
-  step:4,
+  step:30,
   speed: 70,
   point_number: 400,
   point_size: 5,
@@ -28,7 +28,16 @@ let option = {
 option.save = function () {
   saveCanvas(canvas, 'x06lan_p5.js', 'png');
 }
-
+option.noise= function () {
+  option.noise_scale=100;
+  option.max_angle=2;
+  option.step=50;
+}
+option.circuit_board= function () {
+  option.noise_scale=100;
+  option.max_angle=2;
+  option.step=8;
+}
 const gui = new dat.GUI()
 let controls = gui.addFolder("Controls")
 controls.open()
@@ -51,6 +60,10 @@ par.add(option, "point_size", 1, 20, 0.1)
 par.add(option, "length", 1, 100, 1)
 par.add(option, "refresh")
 
+let preset=controls.addFolder("preset") 
+preset.add(option,"noise")
+preset.add(option,"circuit_board")
+preset.open()
 controls.add(option, "save")
 
 
