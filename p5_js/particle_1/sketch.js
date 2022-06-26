@@ -25,10 +25,12 @@ let option={
 option.particle=function(){
   option.range=600
   option.offset=-300
+  gui.updateDisplay();
 }
 option.circle=function(){
   option.range=90
   option.offset=160
+  gui.updateDisplay();
 }
 option.save=function(){
   saveCanvas(canvas, 'x06lan_p5.js', 'png');

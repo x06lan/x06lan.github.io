@@ -32,11 +32,13 @@ option.noise= function () {
   option.noise_scale=100;
   option.max_angle=2;
   option.step=50;
+  gui.updateDisplay();
 }
 option.circuit_board= function () {
   option.noise_scale=100;
   option.max_angle=2;
   option.step=8;
+  gui.updateDisplay();
 }
 const gui = new dat.GUI()
 let controls = gui.addFolder("Controls")
