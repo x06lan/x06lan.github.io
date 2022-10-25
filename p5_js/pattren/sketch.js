@@ -11,7 +11,7 @@ let option = {
   range: 600,
   offset: -300,
   point_number: 50,
-  length: 40,
+  length: 5,
   point_size: 10,
   speed: 100,
   refresh: true,
@@ -93,21 +93,29 @@ let point_line = function (inx, iny) {
     for (var i = 1; i < Math.min(point.path_long, point.path.length); i++) {
       noStroke();
       let op = 140 * ((point.path_long - i) / point.path_long)
+      // op = 255;
       point.color.setAlpha(op);
       fill(point.color);
+      // noSmooth();
+      strokeWeight(option.point_size);
       strokeWeight(option.point_size * op / 140);
       stroke(point.color)
+      // stroke(255)
       let pos = point.path[i]
       let lastpos = point.path[i - 1]
+      // ellipse(pos.x, pos.y, option.point_size, option.point_size);
       line(pos.x, pos.y, lastpos.x, lastpos.y)
 
     }
+
+
   }
   return point
+
 }
 // let point
 function setup() {
-  canvas = createCanvas(window.innerWidth, window.innerHeight);
+  canvas = createCanvas(window.innerWidth - 10, window.innerHeight - 21);
   // Starts in the middle
   x = width / 2;
   y = height / 2;
@@ -119,6 +127,8 @@ function setup() {
     else if (i % 3 == 2) points[i].setcolor(color(option.colors.color2))
     else if (i % 3 == 0) points[i].setcolor(color(option.colors.color3))
   }
+
+
 }
 
 
@@ -160,6 +170,8 @@ function draw() {
       point_point.draw()
 
     }
+
+
   }
   timecount += option.speed / 10000
 }
