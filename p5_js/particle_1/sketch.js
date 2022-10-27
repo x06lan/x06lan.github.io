@@ -107,7 +107,7 @@ let point_line = function (inx, iny) {
 }
 // let point
 function setup() {
-  canvas = createCanvas(window.innerWidth, window.innerHeight);
+  canvas = createCanvas(window.innerWidth, window.innerHeight + 5);
   // Starts in the middle
   x = width / 2;
   y = height / 2;

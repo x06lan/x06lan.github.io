@@ -126,7 +126,8 @@ function initpoint(point, id) {
 
 // let point
 function setup() {
-  canvas = createCanvas(window.innerWidth - 10, window.innerHeight - 21);
+  canvas = createCanvas(window.innerWidth, window.innerHeight);
+  console.log(canvas)
   // Starts in the middle
   x = width / 2;
   y = height / 2;
