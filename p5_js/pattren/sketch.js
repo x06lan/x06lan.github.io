@@ -73,105 +73,102 @@ let point_line = function (inx, iny) {
   let point = {}
   point.path = []
   point.pos = { x: inx, y: iny }
-  point.path_long = 40
+  point.as = { x: 0, y: 0 }
+  point.length = 40
   point.color = color(174, 19, 109);
   point.setcolor = function (setcolor) {
     point.color = setcolor
   }
+
+
   point.moveto = function (x, y) {
     point.path.unshift(point.pos)
-    if (point.path.length > point.path_long) point.path.splice(-1, 1)
+    if (point.path.length > point.length) point.path.splice(-1, 1)
 
     point.pos = { x: x, y: y }
-    if (point.pos.y > height) {
-      // point.pos.x=point.
+    if (point.pos.y > height)
       point.pos.y = 0;
-    }
+    if (point.pos.y < 0)
+      point.pos.y = height - 1;
+    if (point.pos.x > width)
+      point.pos.x = 0;
+    if (point.pos.x < 0)
+      point.pos.x = width - 1;
 
   }
   point.draw = function () {
-    for (var i = 1; i < Math.min(point.path_long, point.path.length); i++) {
+    let length = Math.min(point.length, point.path.length)
+    for (var i = 1; i < length; i++) {
       noStroke();
-      let op = 140 * ((point.path_long - i) / point.path_long)
-      // op = 255;
+      let op = 140 * ((length - i) / length);
       point.color.setAlpha(op);
       fill(point.color);
-      // noSmooth();
-      strokeWeight(option.point_size);
       strokeWeight(option.point_size * op / 140);
       stroke(point.color)
-      // stroke(255)
       let pos = point.path[i]
       let lastpos = point.path[i - 1]
-      // ellipse(pos.x, pos.y, option.point_size, option.point_size);
       line(pos.x, pos.y, lastpos.x, lastpos.y)
 
     }
-
-
+    // fill(point.color);
+    // ellipse(point.pos.x, point.pos.y, option.point_size, option.point_size);
   }
+
   return point
 
 }
+function initpoint(point, id) {
+  if (id % 3 == 1) point.setcolor(color(option.colors.color1))
+  else if (id % 3 == 2) point.setcolor(color(option.colors.color2))
+  else if (id % 3 == 0) point.setcolor(color(option.colors.color3))
+
+}
+
 // let point
 function setup() {
   canvas = createCanvas(window.innerWidth - 10, window.innerHeight - 21);
   // Starts in the middle
   x = width / 2;
   y = height / 2;
-  // point=point_line(x,y)
   for (var i = 0; i < option.point_number; i++) {
     points[i] = point_line(x, y)
+    points[i].pos.x = x
+    points[i].pos.y = y
+    initpoint(points[i], i)
 
-    if (i % 3 == 1) points[i].setcolor(color(option.colors.color1))
-    else if (i % 3 == 2) points[i].setcolor(color(option.colors.color2))
-    else if (i % 3 == 0) points[i].setcolor(color(option.colors.color3))
+    points[i].draw()
   }
 
 
 }
 
 
+
 function draw() {
 
   if (option.refresh) {
     background(color(option.colors.background));
+    for (let i = 0; i < option.point_number; i++) {
+      if (points[i] == undefined) {
+        points[i] = point_line(0, 0)
+        initpoint(points[i], i)
+
+      }
+      point = points[i]
+      point.length = option.length
+      // console.log(point)
+      angle = i / points.length * Math.PI * 2
+      speed = option.speed / 100
+
+      dx = Math.cos(angle) * speed
+      dy = Math.sin(angle) * speed
+      point.moveto(point.pos.x + dx, point.pos.y + dy)
+      point.draw()
+
+
+    }
 
   } else {
-    // option.length=1
-    // controls.updateDisplay();
-  }
-  if (option.point_number > points.length) {
-    console.log(option.point_number)
-    for (var i = points.length; i < option.point_number; i++) {
-      points[i] = point_line(x, y)
-
-      if (i % 3 == 1) points[i].setcolor(color(option.colors.color1))
-      else if (i % 3 == 2) points[i].setcolor(color(option.colors.color2))
-      else if (i % 3 == 0) points[i].setcolor(color(option.colors.color3))
-
-    }
-  }
-  for (var i = 0; i < points.length; i++) {
-    let point_point = points[i]
-    if (points.length > option.point_number) {
-      points.splice(i, 1)
-    } else {
-      let newx, newy;
-
-      if (i % 3 == 1) points[i].setcolor(color(option.colors.color1))
-      else if (i % 3 == 2) points[i].setcolor(color(option.colors.color2))
-      else if (i % 3 == 0) points[i].setcolor(color(option.colors.color3))
-      point_point.path_long = option.length
-      newx = (option.range * noise(timecount + i) + option.offset) * Math.cos(timecount + i) + x
-      newy = (option.range * noise(timecount + i) + option.offset) * Math.sin(timecount + i) + y
-
-      point_point.moveto(newx, newy)
-      point_point.draw()
-
-    }
-
-
   }
   timecount += option.speed / 10000
 }
