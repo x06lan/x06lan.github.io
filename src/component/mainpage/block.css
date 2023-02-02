@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+.icon-container{
+    @apply
+    flex
+    flex-wrap
+    flex-row
+    block-container
+    backdrop-blur-lg;
+    /* w-13/20 */
+    width: 65%;
+}
+.block-container {
+
+    @apply 
+    rounded-lg
+    px-1
+    py-5
+    mx-auto
+    border
+    border-solid
+/* custom style */
+    border-color
+}
+.main-block{
+    @apply 
+    bg-transparent 
+    /* mx-5 */
+    my-10
+    mx-auto 
+    hover:scale-125
+    duration-500
+    /* my-auto */
+}
+.icon-size{
+    @apply
+    /* w-1/4 */
+    xs:w-12
+    sm:w-20
+    md:w-40
+    lg:w-48
+    aspect-square
+}
+.icon-width{
+    @apply
+    xs:w-12
+    sm:w-20
+    md:w-24
+    lg:w-48
+}
+.icon-animation{
+    @apply
+    /* hover:w-1/3 */
+    hover:scale-[1.05]
+    /* sm:hover:scale-125 */
+    /* md:hover:scale-125 */
+    /* sm:hover:w-20*/
+    /* md:hover:w-48 */
+    /* lg:hover:w-52 */
+    /* xl:hover:w-52 */
+    duration-500
+    /* delay-100 */
+    
+}
+.block-image{
+    @apply 
+    mx-auto
+    rounded-xl
+    /* bg-white */
+}
+.block-text{
+    @apply 
+    text-white
+    sm:text-sm
+    md:text-base
+    lg:text-lg
+    xl:text-xl
+    text-center
+    mx-auto
+    sm:my-auto
+    md:my-auto
+
+    /* custom */
+    icon-width
+    /* icon-animation */
+}
+.border-color{
+    @apply 
+    border-[#44009d]
+    bg-[rgba(12,15,50,0.68)]
+    border-opacity-20
+    /* shadow-2xl */
+    /* shadow-[10px 10px 10px 10px] */
+    shadow-[rgba(56,28,213,0.36)]
+    /* shadow */
+    /* backdrop-blur-lg */
+}
