@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>json tree</title>
+    <link rel="icon" href="https://x06lan.github.io/img/x06_icon.png" type="image/x-icon"/>
+
+</header>
+
+<body style="background-color: #000000;">
+    <textarea class="in_text">
+
+        </textarea>
+    <textarea class="out_text">
+
+        </textarea>
+    <button class="convert_button">
+            ok
+        </button>
+</body>
+<script>
+    function json_length(obj) {
+        var i = 0;
+        for (var x in obj) {
+            if (obj.hasOwnProperty(x),typeof(obj=="object")) {
+                i++;
+            }
+        }
+        return i;
+    }
+
+    function file_child_len(json_arr, save) {
+
+        if (json_arr.length <= 0) {
+            return save
+        }
+
+
+        for (const key in json_arr) {
+            if (json_arr.hasOwnProperty(key)) {
+                var item = json_arr[key]
+
+                if (json_length(item) != 0 && typeof(item)=="object") {
+                    save += file_child_len(item, save)
+                        // console.log("c",save)
+                } else {
+                    save += 1
+                }
+
+            }
+        }
+        return save
+
+    }
+
+    function tab_tree(arr, number) {
+        var out = []
+        for (let x = 0; x < arr.length; x++) {
+            var ele = arr[x]
+            out[x] = ele
+
+            for (let y = 0; y < number; y++) {
+                out[x] = " " + out[x]
+
+            }
+
+
+        }
+
+        return out
+    }
+
+    function json_to_text(json_arr) {
+
+        var text_arr = []
+        var i = -1
+        var dir_number = -1
+        // '─' number
+        var set_len = 2
+        //tab number
+        var tab = 4
+        var file_len = json_length(json_arr)
+        for (const key in json_arr) {
+            var ele = json_arr[key]
+            i += 1
+            dir_number += 1
+            if (dir_number == file_len - 1) {
+                text_arr[i] = "└"
+
+            } else {
+                text_arr[i] = "├"
+            }
+            for (let x = 0; x < set_len; x++) {
+                text_arr[i] += "─"
+
+            }
+
+            text_arr[i] += key
+            // console.log(ele,typeof(ele))
+            if (typeof(ele)=="object") {
+                var ch_ele = json_to_text(ele)
+                if (dir_number < file_len - 1) {
+                    ch_ele = tab_tree(ch_ele, tab - 1)
+                    for (let x = 0; x < ch_ele.length; x++) {
+                        ch_ele[x] = "|" + ch_ele[x]
+
+                    }
+                } else {
+                    ch_ele = tab_tree(ch_ele, tab)
+                }
+
+                for (let x = 0; x < ch_ele.length; x++) {
+                    const element = ch_ele[x];
+                    text_arr[i + x + 1] = element
+
+
+                }
+                i += file_child_len(ele, 0)
+            }
+            else if(ele!="") {
+
+                text_arr[i] +="."+ele
+
+            }
+        }
+
+        return text_arr
+
+    }
+    var json_test = {
+        "test": {
+            "google": "",
+            "some": {
+                "not": "",
+                "ok": ""
+            },
+            "Facebook": "",
+            "AWS": {
+                "face": "",
+                "youtube": {
+                    "channel": "",
+                    "file": ""
+                }
+            }
+        }
+    }
+    document.getElementsByClassName("in_text")[0].value = JSON.stringify(json_test, null, "    ")
+
+    var button = document.getElementsByClassName("convert_button")[0]
+    button.onclick = function(e) {
+        // document.getElementsByClassName("in_text")[0].value='{"google":"", "facebook":"", "some":{ "not":"", "ok":"" } } '
+        var text_json = document.getElementsByClassName("in_text")[0].value
+        var out_texteare = document.getElementsByClassName("out_text")[0]
+        try {
+            var in_json = JSON.parse(text_json)
+
+            out_texteare.value = ""
+            var output = json_to_text(in_json)
+            for (let x = 0; x < output.length; x++) {
+                const element = output[x] + "\n";
+                out_texteare.value += element
+
+            }
+
+        } catch (error) {
+            console.log(error)
+            out_texteare.value = "error"
+
+        }
+    }
+
+    button.click()
+</script>
+<style>
+    .in_text {
+        height: 80%;
+        width: 50%;
+        position: absolute;
+        left: 0;
+        top: 10%;
+        color: white;
+        background-color: rgb(39, 40, 34);
+    }
+    
+    .out_text {
+        height: 80%;
+        width: 50%;
+        right: 0;
+        top: 10%;
+        position: absolute;
+        color: white;
+        background-color: rgb(39, 40, 34);
+    }
+    
+    .convert_button {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+</style>
+
+</html>
