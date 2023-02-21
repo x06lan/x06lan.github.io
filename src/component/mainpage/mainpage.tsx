@@ -72,7 +72,7 @@ let site:Array<BlockInfo>= [
   
   return (
     <div className="bg-[#09110c]">
-          <div className='absolute top-52 left-[20%] w-fullscreen z-10'>
+          <div className='absolute top-52 left-[20%] z-10'>
             <div className='mx-auto'>
               <h2 className='text-white text-6xl '>
                 x06lan
