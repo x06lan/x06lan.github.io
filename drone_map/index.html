@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map Example</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"
+        integrity="sha512-LF8ZB1iTwi4Qvkm4pekHG4a437Y9Af5ZuwbnW4GTbAWQeR2E4KW8WF+xH8b9psevV7wIlDMx1MH9YfPqgKhA/Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Your custom styles (if any) -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 1000px;
+            max-height: 2000px;
+        }
+
+        #gui-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            /* Ensure the GUI is on top of the map */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Map container -->
+    <div id="map"></div>
+    <div id="gui-container"></div>
+
+    <!-- Leaflet JavaScript -->
+    <script>
+        function sinPath(line, n, speed, range) {
+            let dx = line[1][0] - line[0][0]
+            let dy = line[1][1] - line[0][1]
+            let dz = line[1][2] - line[0][2]
+            let pi = Math.PI;
+            let angel = (Math.atan2(dy, dx) + pi / 2)
+            let direction = [Math.cos(angel), Math.sin(angel)]
+            let lastPos = line[0]
+
+            let result = [lastPos]
+            for (let i = 1.0; i <= n; i++) {
+                let t = i / n
+                let r = Math.sin(2 * pi * speed * t) * range
+                let pos = [line[0][0] + t * dx + r * direction[0], line[0][1] + t * dy + r * direction[1], line[0][2] + t * dz]
+                result.push(pos)
+                lastPos = pos
+            }
+            return result;
+        }
+        function pathLen(lines) {
+            let lastPos = lines[0]
+            let totalDistance = 0
+
+            for (let i = 1; i < lines.length; i++) {
+                let pos = lines[i]
+                let dx = lastPos[0] - pos[0]
+                let dy = lastPos[1] - pos[1]
+                let distance = Math.sqrt(dx * dx + dy * dy)
+                totalDistance += distance
+
+                lastPos = pos
+            }
+            return totalDistance
+        }
+        function calcDronePath(lines, totalDistance, tt) {
+            let lastPos = lines[0]
+            let targetDistance = tt * totalDistance
+            let result = []
+            let sumDistance = 0
+            for (let i = 0; i < lines.length; i++) {
+                let pos = lines[i]
+                let dx = pos[0] - lastPos[0]
+                let dy = pos[1] - lastPos[1]
+                let distance = Math.sqrt(dx * dx + dy * dy)
+                //console.log(sumDistance)
+                if (sumDistance + distance > targetDistance) {
+                    let n = (targetDistance - sumDistance) / distance
+                    pos = [lastPos[0] + n * dx, lastPos[1] + n * dy]
+                    result.push(pos)
+                    break;
+                }
+                lastPos = pos
+                result.push(pos)
+                sumDistance += distance
+            }
+            return result;
+        }
+        function createMapLayer(sw) {
+            let mapUrl = ["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                "https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
+                'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
+                'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+                'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}']
+            let param = {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 20,
+                //subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+            }
+            if (sw > 1)
+                param.subdomains = ['mt0', 'mt1', 'mt2', 'mt3'];
+
+            let mapLayer = L.tileLayer(mapUrl[sw], param);
+            return mapLayer
+        }
+        function createPointLayer(coords) {
+            for (coord of coords) {
+                let circle = L.circle(coord, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 15,
+                    draggable: true
+                }).addTo(map);
+            }
+        }
+
+    </script>
+
+    <script>
+        // Initialize the map
+        let gasCoord = [24.003113840600238, 121.08584146364414]
+        let startCoord = [23.99980132570937, 121.07888485970997]
+        let templeCoord = [23.99903491224826, 121.0883775310919]
+        let observatoryCoord = [24.01818533037116, 121.08956293633916]
+        let centerCoord = gasCoord
+        let slide1 = [
+            [24.004513840600238, 121.088146364414],
+            templeCoord,
+            [24.002613840600238, 121.08384146364414],
+        ]
+        let slide2 = [
+            [24.005513840600238, 121.090146364414],
+            [24.015513840600238, 121.090146364414],
+            observatoryCoord,
+            [24.015013840600238, 121.08784146364414],
+            [24.005613840600238, 121.08384146364414],
+        ];
+
+        let option = {
+            position: 0.05,
+            speed: 0.7,
+            flying: true,
+            maptype: 1,
+            colors: {
+                pathColor: "#005eff",
+                droneColor: "#ce007f",
+                slideColor: "#ce6f00"
+            }
+        }
+        // Add a base map layer (e.g., OpenStreetMap)
+        let pointCoords = [startCoord, observatoryCoord, gasCoord, templeCoord, startCoord]
+        let lineCoords = [[pointCoords[1], pointCoords[2]], [pointCoords[2], pointCoords[3]], [pointCoords[1], pointCoords[3]]]
+        let droneCoord = startCoord
+        let map = L.map('map').setView(centerCoord, 15);
+        let tile = createMapLayer(2)
+        tile.addTo(map)
+        let droneMaker = L.marker(droneCoord).addTo(map)
+        let marker = L.marker(gasCoord).addTo(map);
+        marker.bindPopup("gas station").openPopup();
+        let path = [startCoord,
+            ...sinPath(lineCoords[0], 200, 10, 0.002),
+            ...sinPath(lineCoords[1], 100, 3, 0.002),
+            startCoord
+        ]
+        let sumLen = pathLen(path)
+        //console.log(path)
+        let polyline = L.polyline(path, { color: option.colors.pathColor, dashArray: '10, 10' }).addTo(map)
+        let droneline = L.polyline(path, { color: option.colors.pathColor, fillOpacity: 0.4 }).addTo(map)
+
+        let polygon1 = L.polygon(slide1, { color: option.colors.slideColor }).addTo(map);
+        let polygon2 = L.polygon(slide2, { color: option.colors.slideColor }).addTo(map);
+        let points = createPointLayer(pointCoords)
+
+        //make controler
+        const gui = new dat.GUI()
+        gui.remember(option);
+        let guiContainer = document.querySelector("#gui-container").appendChild(gui.domElement)
+        let controller = gui.addFolder("Controls")
+        controller.open()
+        //change map type
+        controller.add(option, "maptype", [0, 1, 2, 3, 4]).onChange(function (value) {
+            tile.remove()
+            tile = createMapLayer(value)
+            tile.addTo(map)
+
+        })
+        //update colors
+        controller.addColor(option.colors, "pathColor").onChange(function (value) {
+            polyline.setStyle({ color: value, fillOpacity: 0.4 })
+        });
+        controller.addColor(option.colors, "droneColor").onChange(function (value) {
+            droneline.setStyle({ color: value })
+        });
+        controller.addColor(option.colors, "slideColor").onChange(function (value) {
+            polygon1.setStyle({ color: value })
+            polygon2.setStyle({ color: value })
+        });
+        controller.add(option, "flying")
+        //updae drone position
+        let position = controller.add(option, "position", 0, 1, 0.000001)
+        controller.add(option, "speed", 0, 2, 0.000001)
+        let droneIcon = L.icon({ iconUrl: "https://cdn-icons-png.flaticon.com/512/1830/1830867.png", iconSize: [38, 50] })
+
+
+        setInterval(() => {
+            if (option.flying) {
+
+                option.position += option.speed / 1000.0;
+                option.position -= Math.floor(option.position)
+                position.setValue(option.position)
+
+                let dronePath = calcDronePath(path, sumLen, option.position)
+                droneline.remove()
+                droneline = L.polyline(dronePath, { color: option.colors.droneColor }).addTo(map)
+                droneline.addTo(map);
+
+                droneMaker.remove()
+                //droneMaker = L.marker(dronePath.pop(), option = { icon: droneIcon })
+                droneMaker = L.marker(dronePath.pop())
+                droneMaker.addTo(map);
+            }
+        }, 16)
+
+    </script>
+
+</body>
+
+</html>
