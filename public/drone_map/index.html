@@ -99,6 +99,7 @@
                 'http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',
                 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
                 'http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}']
+
             let param = {
                 attribution: '© OpenStreetMap contributors',
                 maxZoom: 20,
@@ -109,6 +110,31 @@
 
             let mapLayer = L.tileLayer(mapUrl[sw], param);
             return mapLayer
+        }
+        function slide1Layer() {
+            let slidea = L.tileLayer.wms('https://dwgis1.ncdr.nat.gov.tw/server/services/MAP0627/Map2022EGDipSlope/MapServer/WMSServer', {
+                layers: '0',
+                format: 'image/png',
+                transparent: true,
+                crs: L.CRS.EPSG3826,
+                attribution: '&copy; Your Attribution Here'
+            }).addTo(map);
+            let slideb = L.tileLayer.wms('https://dwgis1.ncdr.nat.gov.tw/server/services/MAP0627/Map2022Debris/MapServer/WMSServer', {
+                layers: '0',
+                format: 'image/png',
+                transparent: true,
+                crs: L.CRS.EPSG3826,
+                attribution: '&copy; Your Attribution Here'
+            }).addTo(map);
+
+            let slidec = L.tileLayer.wms('https://dwgis1.ncdr.nat.gov.tw/server/services/MAP0627/Map2022PotentialLandslope/MapServer/WMSServer', {
+                layers: '0',
+                format: 'image/png',
+                transparent: true,
+                crs: L.CRS.EPSG3826,
+                attribution: '&copy; Your Attribution Here'
+            }).addTo(map);
+            return [slidea, slideb, slidec]
         }
         function createPointLayer(coords) {
             for (coord of coords) {
@@ -162,6 +188,8 @@
         let map = L.map('map').setView(centerCoord, 15);
         let tile = createMapLayer(2)
         tile.addTo(map)
+        let slides = slide1Layer()
+
         let droneMaker = L.marker(droneCoord).addTo(map)
         let marker = L.marker(gasCoord).addTo(map);
         marker.bindPopup("gas station").openPopup();
@@ -190,6 +218,8 @@
             tile.remove()
             tile = createMapLayer(value)
             tile.addTo(map)
+            for (x of slides)
+                x.bringToFront();
 
         })
         //update colors
