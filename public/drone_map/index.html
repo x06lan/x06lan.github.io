@@ -124,7 +124,8 @@
                 format: 'image/png',
                 transparent: true,
                 crs: L.CRS.EPSG3826,
-                attribution: '&copy; Your Attribution Here'
+                attribution: '&copy; Your Attribution Here',
+                opacity: 0.7
             }).addTo(map);
 
             let slidec = L.tileLayer.wms('https://dwgis1.ncdr.nat.gov.tw/server/services/MAP0627/Map2022PotentialLandslope/MapServer/WMSServer', {
@@ -132,7 +133,8 @@
                 format: 'image/png',
                 transparent: true,
                 crs: L.CRS.EPSG3826,
-                attribution: '&copy; Your Attribution Here'
+                attribution: '&copy; Your Attribution Here',
+                opacity: 0.7
             }).addTo(map);
             return [slidea, slideb, slidec]
         }
